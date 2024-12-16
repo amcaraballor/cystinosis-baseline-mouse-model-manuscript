@@ -11,19 +11,18 @@ This repository contains data processing steps from a subset of LC-MS/MS metabol
 
 The `MZmine4_outputs/` directory contains `.mgf` and `.csv` files used as inputs for FBMN and stats. 
 
-The `Scripts/` directory contains `.Rmd` files that generate the tables and graphics shown below. 
-It requires R, RStudio, and the rmarkdown package. 
+The `Scripts/` directory contains `.R` files used for cleaning dataframes, generate tables and graphics from the statistical analysis. 
+It requires R and RStudio. 
 
-* R: [R Download](https://cran.r-project.org/bin/)
-* RStudio: [RStudio Download](https://www.rstudio.com/products/rstudio/download/)
-* rmarkdown can be installed using the install packages interface in RStudio
+* R: [R Download](https://cran.r-project.org/bin/).
+* RStudio: [RStudio Download](https://www.rstudio.com/products/rstudio/download/).
 
 # Table of contents
 1. Data processing in [MZmine4](https://mzio.io/).
 2. [FBMN job](https://gnps2.org/status?task=e92c0b19522946af89db73401c39d672)
-3. Blank removal, imputation and normalization. This can be done using [FBMN-stats](https://fbmn-statsguide.gnps2.org/) by providing the FBMN job task (e92c0b19522946af89db73401c39d672)
-4. Statistical analysis using MixOmics
-5. Generate input tables with loading and VIPs scores to map into networks and visualize in [Cytoscape](https://cytoscape.org/).
+3. Data cleaning 
+4. Statistical analysis using mixOmics
+5. Additional outputs to map into networks
 
 # 1. Data processing in MZmine4
 
@@ -31,9 +30,14 @@ With this software, the input files necessary for performing FBMN in GNPS2 are g
 
 * Batch: the `.mzbatch` file contains the settings used to process the data (`.mzML` files can be obtained from the dataset [MSV000093184](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fccbbebb0870401bbfc3199c10df6c3f)).
 * Feature table: a `dataset_quant.csv` file corresponds to the MZmine4 output containing the features in rows, samples in columns and peak areas as cell values. This file is the "inputfeatures" used in FBMN GNPS2.
-* Edges annotation: a `dataset_edges_msannotation.csv` file corresponds to the MZmine4 output containing the annotations of edges from Ion Identity Molecular Networking (some ions might correspond to adducts of the same molecule and this helps with annotating them). 
+* Edges annotation: a `dataset_edges_msannotation.csv` file corresponds to the MZmine4 output containing the annotations of edges from Ion Identity Molecular Networking (some ions might correspond to adducts of the same molecule and this helps with annotating them).
+* Spectral data: a `dataset.mgf` contains the MS1 (precursor ion) and MS2 (fragmentation spectra) information. This is the file used as "inputspectra" in FBMN GNPS2.
 
-Note: By *features* we mean detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area.
+**Note:** By **features** we mean detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area.
+
+For more details and tutorials, visit [MZmine4](https://mzio.io/) and this publication, although on MZmine3, their step-by-step remains applicable to MZmine4: 
+
+[Heuckeroth, S., Damiani, T., Smirnov, A. et al. Reproducible mass spectrometry data processing and compound annotation in MZmine 3. Nat Protoc 19, 2597–2641 (2024)](https://doi.org/10.1038/s41596-024-00996-y).
 
 # 2. Feature-based Molecular Networking
 
@@ -47,3 +51,30 @@ For more details about molecular networking, feature-based molecular networking 
 [Nothias, LF., Petras, D., Schmid, R. et al. Feature-based molecular networking in the GNPS analysis environment. Nat Methods 17, 905–908 (2020)](https://doi.org/10.1038/s41592-020-0933-6). 
 
 [Schmid, R., Petras, D., Nothias, LF. et al. Ion identity molecular networking for mass spectrometry-based metabolomics in the GNPS environment. Nat Commun 12, 3832 (2021)](https://doi.org/10.1038/s41467-021-23953-9).
+
+# 3. Data cleaning
+
+By data cleaning, the following steps, which can be optional, were applided: Blank removal, imputation and normalization. This can be done using [FBMN-stats](https://fbmn-statsguide.gnps2.org/) by providing the FBMN job task (e92c0b19522946af89db73401c39d672) under GNPS task ID and by clicking "Load files from GNPS" (red bottom)
+
+* Once the quantification table (feature table) and metadata are retrieved, **Data Cleanup** can be performed.
+* **Samples** from the "attribute for sample selection" are selected by "SampleType", "sample selection" = "Animal"
+* **Blanks** from the "attribute for blank selection" are selected by "SampleType", "blank selection" = "blank_analysis", "blank_extraction", "blank_QC"
+* cutoff threshold for blank removal: 0.30
+* Imputation: These values will be filled with random number between 1 and 171 (Limit of Detection) during imputation.
+* Normalization: Total Ion Current (TIC) or sample-centric normalization
+* Submit and download as .csv
+* *Optional* Quick statistical analysis and overview of the data can be done in the fbmn-statsguide app
+
+These data cleaning step provide the `fbmn_stats_data_clean_export.csv` used for downstream process. This file is available in the `MixOmics/` folder
+
+**Metadata**: A metadata `merged_metadata.tsv` is also provided.
+
+# 4. Statistical analysis using mixOmics
+
+After data cleaning, the mixOmics package is used for statistical analysis. Scripts in R are provided under the `Scripts/` directory.
+
+# 5. Additional outputs to map into networks
+
+Additional outputs are generated (e.g., loading and VIPs scores) to map into networks and visualize in [Cytoscape](https://cytoscape.org/).
+
+These outputs are also provided under the `MixOmics/` folder.
