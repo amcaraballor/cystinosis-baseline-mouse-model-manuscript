@@ -27,7 +27,13 @@ It requires R, RStudio, and the rmarkdown package.
 
 # 1. Data processing in MZmine4
 
-With this software, the input files necessary for performing FBMN in GNPS2 are generated. The feature table FBMN provides the network where features (detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area) are clustered based on spectral similarity. Chemically related molecules, represented as nodes in a network, are connected forming molecular families. In addition to the molecular networking, a library search is performed providing annotations to the detected features. 
+With this software, the input files necessary for performing FBMN in GNPS2 are generated and described below: 
+
+* Batch: the `.mzbatch` file contains the settings used to process the data (`.mzML` files can be obtained from the dataset [MSV000093184](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fccbbebb0870401bbfc3199c10df6c3f)).
+* Feature table: a `dataset_quant.csv` file corresponds to the MZmine4 output containing the features in rows, samples in columns and peak areas as cell values. This file is the "inputfeatures" used in FBMN GNPS2.
+* Edges annotation: a `dataset_edges_msannotation.csv` file corresponds to the MZmine4 output containing the annotations of edges from Ion Identity Molecular Networking (some ions might correspond to adducts of the same molecule and this helps with annotating them). 
+
+Note: By *features* we mean detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area.
 
 # 2. Feature-based Molecular Networking
 
@@ -37,5 +43,7 @@ FBMN provides the network where features (detected ion MS1, fragmentation spectr
 
 For more details about molecular networking, feature-based molecular networking and ion identity, please read the following publications: 
 [Aron, A.T., Gentry, E.C., McPhail, K.L. et al. Reproducible molecular networking of untargeted mass spectrometry data using GNPS. Nat Protoc 15, 1954–1991 (2020)](https://doi.org/10.1038/s41596-020-0317-5)
+
 [Nothias, LF., Petras, D., Schmid, R. et al. Feature-based molecular networking in the GNPS analysis environment. Nat Methods 17, 905–908 (2020)](https://doi.org/10.1038/s41592-020-0933-6). 
+
 [Schmid, R., Petras, D., Nothias, LF. et al. Ion identity molecular networking for mass spectrometry-based metabolomics in the GNPS environment. Nat Commun 12, 3832 (2021)](https://doi.org/10.1038/s41467-021-23953-9).
