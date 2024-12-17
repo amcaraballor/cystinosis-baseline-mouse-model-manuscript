@@ -4,12 +4,12 @@ LC-MS/MS metabolomics profile phenotype from gut (fecal), urine and serum on Ctn
 This repository contains data processing steps from a subset of LC-MS/MS metabolomics dataset using the following softwares and resources:
 * A subset of LC-MS/MS data corresponding to the baseline triple metabolomics (fecal, urine and serum) profile of a mouse model Ctns -/- mice versus wild type controls (c57BL/6J).
 * The baseline data is part of the public dataset [MSV000093184](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fccbbebb0870401bbfc3199c10df6c3f).
-* The baseline subset has been processed using [MZmine4](https://mzio.io/) version 4.0.3. from the MZmine4 outputs using the following workflows:
-* Feature-based Molecular Networking in [GNPS2](https://gnps2.org/homepage)
-* Data cleaning (blank removal, imputation and normalization) in [FBMN-stats](https://fbmn-statsguide.gnps2.org/)
-* Statistical analysis using [MixOmics](https://mixomics.org/) package in [Rstudio](https://www.rstudio.com/products/rstudio/download/).
+* The data has been processed using [MZmine4](https://mzio.io/) version 4.0.3.
+* MZmine4 outups have been used for perform Feature-based Molecular Networking (FBMN) in [GNPS2](https://gnps2.org/homepage)
+* Data cleaning (blank removal, imputation and normalization) has been performed in [FBMN-stats](https://fbmn-statsguide.gnps2.org/)
+* Statistical analysis has been performed using [MixOmics](https://mixomics.org/) package in [Rstudio](https://www.rstudio.com/products/rstudio/download/).
 
-The `MZmine4_outputs/` directory contains `.mgf` and `.csv` files used as inputs for FBMN and stats. 
+The `MZmine4_outputs/` directory contains `.mgf` and `.csv` files used as inputs for FBMN and stats as described below. 
 
 The `Scripts/` directory contains `.R` files used for cleaning dataframes, generate tables and graphics from the statistical analysis. 
 It requires R and RStudio. 
@@ -18,7 +18,7 @@ It requires R and RStudio.
 * RStudio: [RStudio Download](https://www.rstudio.com/products/rstudio/download/).
 
 # Table of contents
-1. Data processing with [MZmine4](https://mzio.io/).
+1. Data processing with MZmine4
 2. Feature-based Molecular Networking (FBMN)
 3. Data cleaning 
 4. Statistical analysis using mixOmics
@@ -75,7 +75,7 @@ These data cleaning step provide the `fbmn_stats_data_clean_export.csv` used for
 
 # 4. Statistical analysis using mixOmics
 
-After data cleaning, the mixOmics package is used for statistical analysis. The following Rscripts are provided under the `Scripts/` directory:
+After data cleaning, the [mixOmics](https://mixomics.org/) package is used for statistical analysis. The following Rscripts are provided under the `Scripts/` directory:
 
 * MSV000093184_dataframe_cleaning.R
 * MSV000093184_post_fbmn_stats.R
@@ -84,7 +84,7 @@ After data cleaning, the mixOmics package is used for statistical analysis. The 
 
 # 5. Additional outputs to map into networks
 
-Additional outputs are generated (e.g., loading and VIPs scores) to map into networks and visualize in [Cytoscape](https://cytoscape.org/).
+Additional outputs are generated (_e.g._, loading and VIPs scores) to map into networks and visualize in [Cytoscape](https://cytoscape.org/).
 
 These outputs are also provided under the `MixOmics/` folder.
 
