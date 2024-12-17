@@ -23,6 +23,7 @@ It requires R and RStudio.
 3. Data cleaning 
 4. Statistical analysis using mixOmics
 5. Additional outputs to map into networks
+6. Cytoscape visualization
 
 # 1. Data processing in MZmine4
 
@@ -39,9 +40,11 @@ For more details and tutorials, visit [MZmine4](https://mzio.io/) and this publi
 
 [Heuckeroth, S., Damiani, T., Smirnov, A. et al. Reproducible mass spectrometry data processing and compound annotation in MZmine 3. Nat Protoc 19, 2597–2641 (2024)](https://doi.org/10.1038/s41596-024-00996-y).
 
-# 2. Feature-based Molecular Networking
+# 2. Feature-based Molecular Networking (FBMN)
 
 FBMN provides the network where features (detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area) are clustered based on spectral similarity. Chemically related molecules, represented as nodes in a network, are connected forming molecular families. In addition to the molecular networking, a library search is performed providing annotations to the detected features. 
+
+The FBMN job (task=) in GNPS2 is available through the link  
 
 [example molecular family]
 
@@ -65,16 +68,20 @@ By data cleaning, the following steps, which can be optional, were applided: Bla
 * Submit and download as .csv
 * *Optional* Quick statistical analysis and overview of the data can be done in the fbmn-statsguide app
 
-These data cleaning step provide the `fbmn_stats_data_clean_export.csv` used for downstream process. This file is available in the `MixOmics/` folder
+These data cleaning step provide the `fbmn_stats_data_clean_export.csv` used for downstream process. Due to his size (>20Mb), this file is available in the [MSV000093184](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fccbbebb0870401bbfc3199c10df6c3f). You can access it and download directly or copy/paste the ftp URL to your computer browser: ftp://massive.ucsd.edu/v06/MSV000093184//updates/2024-12-16_amcaraballor_398a311b/other/fbmn_stats_and_metadata/fbmn_stats_data_clean_export.csv
 
-**Metadata**: A metadata `merged_metadata.tsv` is also provided.
+**Metadata**: A metadata `merged_metadata.tsv` is provided under the `MixOmics`.  this file is available in the [MSV000093184](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fccbbebb0870401bbfc3199c10df6c3f). You can access it and download directly or copy/paste the ftp URL to your computer browser: ftp://massive.ucsd.edu/v06/MSV000093184//updates/2024-12-16_amcaraballor_398a311b/other/fbmn_stats_and_metadata/merged_metadata.tsv
 
 # 4. Statistical analysis using mixOmics
 
-After data cleaning, the mixOmics package is used for statistical analysis. Scripts in R are provided under the `Scripts/` directory.
+After data cleaning, the mixOmics package is used for statistical analysis. Rscripts are provided under the `Scripts/` directory.
 
 # 5. Additional outputs to map into networks
 
 Additional outputs are generated (e.g., loading and VIPs scores) to map into networks and visualize in [Cytoscape](https://cytoscape.org/).
 
 These outputs are also provided under the `MixOmics/` folder.
+
+# 6. Cytoscape visualization
+
+Additional `.graphml` output already containing all the additional information created through the downstream analysis described in the previous steps is available under the `Cytoscape` folder.
