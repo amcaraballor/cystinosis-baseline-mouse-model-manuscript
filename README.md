@@ -97,6 +97,7 @@ Additional `FBMN_MSV000093184.cys` output already containing all the additional 
 After the steps described above, one can visualize features (molecules) of interest that have been selected after the downstream statistical analysis. 
 
 ![Baseline urine p-cresol glucuronide molecular family](Results/Baseline_urine_PLS-DA sum p-cresol glucuronide example .png)
+
 This example shows the full molecular network mapped by the sum of importance scores from the PLS-DA models in the baseline urine subset (higher and purple indicate high sum score). Spectral libraries provide a match to p-cresol glucuronide (_m/z_ 302.1241).  
 
 
