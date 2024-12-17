@@ -18,14 +18,14 @@ It requires R and RStudio.
 * RStudio: [RStudio Download](https://www.rstudio.com/products/rstudio/download/).
 
 # Table of contents
-1. Data processing in [MZmine4](https://mzio.io/).
-2. [FBMN job](https://gnps2.org/status?task=e92c0b19522946af89db73401c39d672)
+1. Data processing with [MZmine4](https://mzio.io/).
+2. Feature-based Molecular Networking (FBMN)
 3. Data cleaning 
 4. Statistical analysis using mixOmics
 5. Additional outputs to map into networks
 6. Cytoscape visualization
 
-# 1. Data processing in MZmine4
+# 1. Data processing with MZmine4
 
 With this software, the input files necessary for performing FBMN in GNPS2 are generated and described below: 
 
@@ -44,7 +44,7 @@ For more details and tutorials, visit [MZmine4](https://mzio.io/) and the follow
 
 FBMN provides the network where features (detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area) are clustered based on spectral similarity. Chemically related molecules, represented as nodes in a network, are connected forming molecular families. In addition to the molecular networking, a library search is performed providing annotations to the detected features. 
 
-The FBMN job (task=) in GNPS2 is available through the link  
+The FBMN job (task=e92c0b19522946af89db73401c39d672) in GNPS2 is available through the link [FBMN job](https://gnps2.org/status?task=e92c0b19522946af89db73401c39d672)  
 
 [example molecular family]
 
@@ -57,7 +57,7 @@ For more details about molecular networking, feature-based molecular networking 
 
 # 3. Data cleaning
 
-By data cleaning, the following steps, which can be optional, were applided: Blank removal, imputation and normalization. This can be done using [FBMN-stats](https://fbmn-statsguide.gnps2.org/) by providing the FBMN job task (e92c0b19522946af89db73401c39d672) under GNPS task ID and by clicking "Load files from GNPS" (red bottom)
+By data cleaning, the following steps, which can be optional, were applied: Blank removal, imputation and normalization. This can be done using [FBMN-stats](https://fbmn-statsguide.gnps2.org/) by providing the FBMN job task (e92c0b19522946af89db73401c39d672) under GNPS task ID and by clicking "Load files from GNPS" (red bottom)
 
 * Once the quantification table (feature table) and metadata are retrieved, **Data Cleanup** can be performed.
 * **Samples** from the "attribute for sample selection" are selected by "SampleType", "sample selection" = "Animal"
@@ -74,7 +74,12 @@ These data cleaning step provide the `fbmn_stats_data_clean_export.csv` used for
 
 # 4. Statistical analysis using mixOmics
 
-After data cleaning, the mixOmics package is used for statistical analysis. Rscripts are provided under the `Scripts/` directory.
+After data cleaning, the mixOmics package is used for statistical analysis. The following Rscripts are provided under the `Scripts/` directory:
+
+* MSV000093184_dataframe_cleaning.R
+* MSV000093184_post_fbmn_stats.R
+* MSV000093184_sum_loadings_for_cytoscape.R
+* MSV000093184_boxplots_selected_features.R
 
 # 5. Additional outputs to map into networks
 
@@ -84,4 +89,4 @@ These outputs are also provided under the `MixOmics/` folder.
 
 # 6. Cytoscape visualization
 
-Additional `.graphml` output already containing all the additional information created through the downstream analysis described in the previous steps is available under the `Cytoscape` folder.
+Additional `FBMN_MSV000093184.cys` output already containing all the additional information created through the downstream analysis described in the previous steps is available under the `Cytoscape` folder.
