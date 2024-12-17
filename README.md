@@ -36,7 +36,7 @@ With this software, the input files necessary for performing FBMN in GNPS2 are g
 
 **Note:** By **features** we mean detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area.
 
-For more details and tutorials, visit [MZmine4](https://mzio.io/) and this publication, although on MZmine3, their step-by-step remains applicable to MZmine4: 
+For more details and tutorials, visit [MZmine4](https://mzio.io/) and the following publication, although on MZmine3, provides a step-by-step guide for data processing which remains applicable to MZmine4: 
 
 [Heuckeroth, S., Damiani, T., Smirnov, A. et al. Reproducible mass spectrometry data processing and compound annotation in MZmine 3. Nat Protoc 19, 2597–2641 (2024)](https://doi.org/10.1038/s41596-024-00996-y).
 
