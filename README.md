@@ -24,6 +24,7 @@ It requires R and RStudio.
 4. Statistical analysis using mixOmics
 5. Additional outputs to map into networks
 6. Cytoscape visualization
+7. Results
 
 # 1. Data processing with MZmine4
 
@@ -44,9 +45,9 @@ For more details and tutorials, visit [MZmine4](https://mzio.io/) and the follow
 
 FBMN provides the network where features (detected ion MS1, fragmentation spectrum MS2, retention time (rt) from chromatography, and peak area) are clustered based on spectral similarity. Chemically related molecules, represented as nodes in a network, are connected forming molecular families. In addition to the molecular networking, a library search is performed providing annotations to the detected features. 
 
-The FBMN job (task=e92c0b19522946af89db73401c39d672) in GNPS2 is available through the link [FBMN job](https://gnps2.org/status?task=e92c0b19522946af89db73401c39d672)  
+The FBMN job (task=e92c0b19522946af89db73401c39d672) in GNPS2 is available through the link [FBMN job](https://gnps2.org/status?task=e92c0b19522946af89db73401c39d672)
 
-[example molecular family]
+You can visualize the FBMN results by clicking "Library Results" (to display spectral library matches) or visualize the entire molecular network by clicking "Visualize Full Network in Browser" ("Visualize Full Network w/Singletons in Browser" will allow you to visualize nodes that are not connected to any other one). 
 
 For more details about molecular networking, feature-based molecular networking and ion identity, please read the following publications: 
 [Aron, A.T., Gentry, E.C., McPhail, K.L. et al. Reproducible molecular networking of untargeted mass spectrometry data using GNPS. Nat Protoc 15, 1954–1991 (2020)](https://doi.org/10.1038/s41596-020-0317-5)
@@ -90,3 +91,13 @@ These outputs are also provided under the `MixOmics/` folder.
 # 6. Cytoscape visualization
 
 Additional `FBMN_MSV000093184.cys` output already containing all the additional information created through the downstream analysis described in the previous steps is available under the `Cytoscape` folder.
+
+# 7. Results
+
+After the steps described above, one can visualize features (molecules) of interest that have been selected after the downstream statistical analysis. 
+
+
+This example shows the full molecular network mapped by the sum of importance scores from the PLS-DA models in the baseline urine subset (higher and purple indicate high sum score). Spectral libraries provide a match to p-cresol glucuronide (_m/z_ 302.1241).  
+
+
+Boxplot of the p-cresol glucuronide (featureID 1530, _m/z_ 302.1241, rt 2.41 min) by gender, age and phenotype.
