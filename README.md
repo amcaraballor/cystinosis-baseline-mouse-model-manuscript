@@ -100,5 +100,5 @@ After the steps described above, one can visualize features (molecules) of inter
 
 This example shows the full molecular network mapped by the sum of importance scores from the PLS-DA models in the baseline urine subset (higher and purple indicate high sum score). Spectral libraries provide a match to p-cresol glucuronide (_m/z_ 302.1241).
 
-![Baseline urine p-cresol glucuronide boxplot](https://github.com/amcaraballor/cystinosis-baseline-mouse-model-manuscript/blob/04404e556b60756ed889a1871c83ed51784d1d72/Results/Baseline_urine_PLS-DA%20sum%20p-cresol%20glucuronide%20example%20Boxplot%20by%20group.png)
+![Baseline urine p-cresol glucuronide boxplot](https://github.com/amcaraballor/cystinosis-baseline-mouse-model-manuscript/blob/266e95175e51ba0ad572a922110830e6510f88ef/Results/Boxplot_FeatID_1530_p-cresolglucuronide_baseline_genotype_urine_age.png)
 Boxplot of the p-cresol glucuronide (featureID 1530, _m/z_ 302.1241, rt 2.41 min) by gender, age and phenotype.
